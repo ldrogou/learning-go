@@ -21,8 +21,8 @@ type Cert struct {
 	LabelDate          string
 }
 
-type saver interface {
-	save(c Cert) error
+type Saver interface {
+	Save(c Cert) error
 }
 
 //New construit un nouveau certificat
