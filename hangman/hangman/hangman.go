@@ -42,9 +42,8 @@ func (g *Game) MakeAGuess(guess string) {
 	case "won", "lost":
 		return
 	}
-	m := map[string]int{"test": 2}
-
-	fmt.Printf("ee %v", len(m))
+	//m := map[string]int{"test": 2}
+	//fmt.Printf("ee %v", len(m))
 	guess = strings.ToUpper(guess)
 	if letterInWord(guess, g.UsedLetters) {
 		g.State = "alreadyGuess"

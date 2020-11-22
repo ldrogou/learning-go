@@ -2,9 +2,8 @@ package dictionary
 
 import (
 	"fmt"
-	"time"
-
 	"github.com/dgraph-io/badger/v2"
+	"time"
 )
 
 // Dictionary structure de la bdd
