@@ -42,7 +42,7 @@ func (p *PdfSaver) Save(c cert.Cert) error {
 
 	//--
 	// body
-	pdf.SetFont("Arial", "I", 20)
+	pdf.SetFont("Helvetica", "I", 20)
 	pdf.WriteAligned(0, 50, c.LabelPresented, "C")
 	pdf.Ln(30)
 
@@ -50,11 +50,11 @@ func (p *PdfSaver) Save(c cert.Cert) error {
 	pdf.WriteAligned(0, 50, c.Name, "C")
 	pdf.Ln(30)
 
-	pdf.SetFont("Arial", "I", 20)
+	pdf.SetFont("Helvetica", "I", 20)
 	pdf.WriteAligned(0, 50, c.LabelParticipation, "C")
 	pdf.Ln(30)
 
-	pdf.SetFont("Arial", "I", 15)
+	pdf.SetFont("Helvetica", "I", 15)
 	pdf.WriteAligned(0, 50, c.LabelDate, "C")
 
 	//--
@@ -104,7 +104,7 @@ func header(pdf *gofpdf.Fpdf, c *cert.Cert) {
 	pdf.ImageOptions(filename, x-margin, 20,
 		imageWidth, 0, false, opts, 0, "")
 
-	pdf.SetFont("Arial", "B", 40)
+	pdf.SetFont("Helvetica", "B", 40)
 	pdf.WriteAligned(0, 50, c.LabelCompletion, "C")
 	pdf.Ln(30)
 }
