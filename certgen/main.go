@@ -13,13 +13,22 @@ import (
 
 func main() {
 
+	fileInput := flag.String("file", "", "fichier à traiter")
 	outputType := flag.String("type", "pdf", "Output type.")
 	flag.Parse()
 
-	certs, err := parser.ParseCSV("input.csv")
-	if err != nil {
-		fmt.Printf("Erreur dans la lecture du fichier csv. err=%v", err)
+	var certs []*cert.Cert
+	var err error
+	switch *fileInput {
+	case "":
+		fmt.Printf("Le nom du fichier doit être renseigné. fichier=%v", "")
 		os.Exit(1)
+	default:
+		certs, err = parser.ParseCSV(*fileInput + ".csv")
+		if err != nil {
+			fmt.Printf("Erreur dans la lecture du fichier csv. err=%v \n", err)
+			os.Exit(1)
+		}
 	}
 
 	var saver cert.Saver
