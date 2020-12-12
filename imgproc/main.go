@@ -11,10 +11,20 @@ import (
 
 func main() {
 
-	flags
-	var f filter.Filter = filter.Grayscale{}
-	//t := task.NewWaitGrpTask("./input", "output", f)
-	t := task.NewChanTask("./input", "output", f, 16)
+	var srcDir = flag.String("src", "", "Input Directory")
+	var dstDir = flag.String("dst", "", "Output Directory")
+	var filterType = flag.String("filter", "grayscale", "grayscale/blur")
+	flag.Parse()
+
+	var f filter.Filter
+	switch *filterType {
+	case "grayscale":
+		f = filter.Grayscale{}
+	case "blur":
+		f = filter.Blur{}
+	}
+
+	t := task.NewChanTask(*srcDir, *dstDir, f, 16)
 
 	start := time.Now()
 	t.Process()
